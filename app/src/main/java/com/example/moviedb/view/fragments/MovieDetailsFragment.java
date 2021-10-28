@@ -8,11 +8,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +45,8 @@ public class MovieDetailsFragment extends Fragment {
     private List<Movies.Genres> genre;
     private List<Movies.ProductionCompanies> listcompany;
     private RecyclerView rv_companies;
+    private ProgressBar pb_moviedetails;
+    private ScrollView scrollView2;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -97,12 +102,28 @@ public class MovieDetailsFragment extends Fragment {
         backdrop = view.findViewById(R.id.iv_backdrop_movie_details6);
         rb_film = view.findViewById(R.id.rb_movie_details);
         lbl_votecount = view.findViewById(R.id.lbl_votecount_movie_details);
+        pb_moviedetails = view.findViewById(R.id.pb_moviedetails);
+        scrollView2 = view.findViewById(R.id.scrollView2);
 
         rv_companies = view.findViewById(R.id.rv_companies);
 
         movie_id = getArguments().getString("movieID");
 
         //--End Deklarasi
+        pb_moviedetails.setVisibility(View.VISIBLE);
+        scrollView2.setVisibility(View.INVISIBLE);
+        lbl_judul.setVisibility(View.INVISIBLE);
+        backdrop.setVisibility(View.INVISIBLE);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pb_moviedetails.setVisibility(View.INVISIBLE);
+                backdrop.setVisibility(View.VISIBLE);
+                scrollView2.setVisibility(View.VISIBLE);
+                lbl_judul.setVisibility(View.VISIBLE);
+            }
+        }, 500);
 
         Ambildatamovies();
 

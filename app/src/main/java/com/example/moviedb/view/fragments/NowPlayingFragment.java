@@ -150,11 +150,11 @@ public class NowPlayingFragment extends Fragment {
 
                 if (dy > 0) {
                     visibleItemCount = rv_now_playing.getLayoutManager().getChildCount();
-                    totalItemCount = rv_now_playing.getLayoutManager().getItemCount();
+                    totalItemCount = rv_now_playing.getLayoutManager().getItemCount()-5;
                     pastVisiblesItems = ((LinearLayoutManager) rv_now_playing.getLayoutManager()).findFirstVisibleItemPosition();
 
                     if (!isLoading) {
-                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                        if ((visibleItemCount + pastVisiblesItems) == totalItemCount) {
                             Handler handler = new Handler();
                             showProgressView();
                             isLoading = true;
@@ -171,7 +171,7 @@ public class NowPlayingFragment extends Fragment {
                                     isLoading = false;
                                     hideProgressView();
                                 }
-                            }, 1000);
+                            }, 500);
                         }
                     }
                 }
@@ -191,7 +191,7 @@ public class NowPlayingFragment extends Fragment {
                 ispressed = false;
             } else {
                 adapter.TambahData(nowPlaying.getResults());
-                adapter.notifyItemRangeChanged(totalItemCount, nowPlaying.getResults().size());
+                adapter.notifyItemRangeChanged(totalItemCount+5, nowPlaying.getResults().size());
             }
 
             ItemClickSupport.addTo(rv_now_playing).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {

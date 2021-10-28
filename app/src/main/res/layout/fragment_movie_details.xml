@@ -16,6 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
+    <ProgressBar
+        android:id="@+id/pb_moviedetails"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_backdrop_movie_details6" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"

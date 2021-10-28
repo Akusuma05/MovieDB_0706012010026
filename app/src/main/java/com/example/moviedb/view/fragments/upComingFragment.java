@@ -152,11 +152,11 @@ public class upComingFragment extends Fragment {
 
                 if (dy > 0) {
                     visibleItemCount = rv_upcoming_fragment.getLayoutManager().getChildCount();
-                    totalItemCount = rv_upcoming_fragment.getLayoutManager().getItemCount();
+                    totalItemCount = rv_upcoming_fragment.getLayoutManager().getItemCount()-5;
                     pastVisiblesItems = ((LinearLayoutManager) rv_upcoming_fragment.getLayoutManager()).findFirstVisibleItemPosition();
 
                     if (!isLoading) {
-                        if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
+                        if ((visibleItemCount + pastVisiblesItems) == totalItemCount) {
                             Handler handler = new Handler();
                             showProgressView();
                             isLoading = true;
@@ -194,7 +194,7 @@ public class upComingFragment extends Fragment {
                 ispressed = false;
             } else {
                 adapter.updateData(upComing.getResults());
-                adapter.notifyItemRangeInserted(totalItemCount, upComing.getResults().size());
+                adapter.notifyItemRangeInserted(totalItemCount+5, upComing.getResults().size());
             }
 
             ItemClickSupport.addTo(rv_upcoming_fragment).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
