@@ -1,4 +1,4 @@
-package com.example.moviedb.view;
+package com.example.moviedb.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Hide Navbar
-        getSupportActionBar().hide();
+//        //Hide Navbar
+//        getSupportActionBar().hide();
 
         txt_show = findViewById(R.id.txt_show_main);
         til_movie_id = findViewById(R.id.til_movie_id_main);

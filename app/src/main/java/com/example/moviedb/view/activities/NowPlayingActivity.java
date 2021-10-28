@@ -1,4 +1,4 @@
-package com.example.moviedb.view;
+package com.example.moviedb.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -11,7 +11,6 @@ import android.os.Bundle;
 import com.example.moviedb.R;
 import com.example.moviedb.adapter.NowPlayingAdapter;
 import com.example.moviedb.model.NowPlaying;
-import com.example.moviedb.repositories.MovieRepository;
 import com.example.moviedb.viewmodel.MovieViewModel;
 
 public class NowPlayingActivity extends AppCompatActivity {
@@ -24,12 +23,12 @@ public class NowPlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
 
-        //Hide Navbar
-        getSupportActionBar().hide();
+//        //Hide Navbar
+//        getSupportActionBar().hide();
 
         rv_now_playing = findViewById(R.id.rv_nowplaying);
         view_model = new ViewModelProvider(NowPlayingActivity.this).get(MovieViewModel.class);
-        view_model.getNowPlaying();
+        view_model.getNowPlaying("1");
         view_model.getResultNowPlaying().observe(NowPlayingActivity.this, showNowPlaying);
 
     }

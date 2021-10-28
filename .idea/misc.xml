@@ -9,10 +9,18 @@
         <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/drawable-anydpi/rating.xml" value="0.37864583333333335" />
         <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/drawable-anydpi/time duration.xml" value="0.37864583333333335" />
         <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/drawable-anydpi/time_duration.xml" value="0.37864583333333335" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/drawable/ic_launcher_background.xml" value="0.17037037037037037" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/drawable/ic_now_playing_24.xml" value="0.17037037037037037" />
         <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/activity_main.xml" value="0.1762917933130699" />
-        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/activity_movie_details.xml" value="0.5132743362831859" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/activity_movie_details.xml" value="0.5" />
         <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/activity_now_playing.xml" value="0.1" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/card_companies.xml" value="0.25" />
         <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/card_now_playing.xml" value="0.33" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/fragment_movie_details.xml" value="0.25" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/fragment_now_playing.xml" value="0.17603850050658562" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/layout/fragment_up_coming.xml" value="0.25" />
+        <entry key="..\:/Aan/Kuliah/Semester 3/Mobile Aplication Development/Week 4/MovieDB/app/src/main/res/menu/main_menu.xml" value="0.22" />
       </map>
     </option>
   </component>
