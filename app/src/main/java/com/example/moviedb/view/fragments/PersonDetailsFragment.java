@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -29,6 +32,8 @@ public class PersonDetailsFragment extends Fragment {
     private ImageView iv_person;
     private PersonViewModel viewModel;
     private String person_id;
+    private ScrollView scrollView;
+    private ProgressBar pb_popular;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,9 +88,23 @@ public class PersonDetailsFragment extends Fragment {
         lbl_knownfor = view.findViewById(R.id.lbl_knownfor_person);
         lbl_popularity = view.findViewById(R.id.lbl_popularity_person);
         lbl_placeofBirth = view.findViewById(R.id.lbl_placeofbirth_person);
+        pb_popular = view.findViewById(R.id.pb_person_details);
+        scrollView = view.findViewById(R.id.scrollView2);
         iv_person = view.findViewById(R.id.iv_person);
 
         person_id = getArguments().getString("personId");
+
+        //Loading
+        pb_popular.setVisibility(View.VISIBLE);
+        scrollView.setVisibility(View.INVISIBLE);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pb_popular.setVisibility(View.INVISIBLE);
+                scrollView.setVisibility(View.VISIBLE);
+            }
+        }, 500);
 
         Ambildataperson();
 

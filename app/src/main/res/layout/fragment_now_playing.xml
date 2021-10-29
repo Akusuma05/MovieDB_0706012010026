@@ -18,7 +18,7 @@
 
     <ProgressBar
         android:id="@+id/pb_nowplaying"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
