@@ -1,8 +1,6 @@
 package com.example.moviedb.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +9,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviedb.R;
 import com.example.moviedb.helper.Const;
 import com.example.moviedb.model.NowPlaying;
-import com.example.moviedb.model.UpComing;
-import com.example.moviedb.view.activities.MovieDetailsActivity;
 
 import java.util.List;
 
@@ -91,11 +86,11 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
 
         public CardViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            cv = itemView.findViewById(R.id.cv_card_nowplaying);
-            img_poster = itemView.findViewById(R.id.img_poster_card_now_playing);
-            lbl_title = itemView.findViewById(R.id.lbl_titile_card_nowplaying);
-            lbl_overview = itemView.findViewById(R.id.lbl_subtitle_card_nowplaying);
-            lbl_release_date = itemView.findViewById(R.id.lbl_releasedate_card_nowplaying);
+            cv = itemView.findViewById(R.id.cv_card_popular);
+            img_poster = itemView.findViewById(R.id.img_poster_card_popular);
+            lbl_title = itemView.findViewById(R.id.lbl_titile_card_popular);
+            lbl_overview = itemView.findViewById(R.id.lbl_subtitle_card_popular);
+            lbl_release_date = itemView.findViewById(R.id.lbl_releasedate_card_popular);
         }
     }
 }

@@ -15,27 +15,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.moviedb.R;
-import com.example.moviedb.adapter.NowPlayingAdapter;
+import com.example.moviedb.adapter.PopularPersonAdapter;
 import com.example.moviedb.helper.ItemClickSupport;
-import com.example.moviedb.model.NowPlaying;
-import com.example.moviedb.view.activities.NowPlayingActivity;
+import com.example.moviedb.model.PopularPerson;
 import com.example.moviedb.viewmodel.MovieViewModel;
-
-import java.util.List;
+import com.example.moviedb.viewmodel.PersonViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NowPlayingFragment#newInstance} factory method to
+ * Use the {@link PopularPersonFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NowPlayingFragment extends Fragment {
+public class PopularPersonFragment extends Fragment {
 
-    private RecyclerView rv_now_playing;
-    private MovieViewModel view_model;
-    private ProgressBar pb_nowplaying;
+    private RecyclerView rv_popular;
+    private PersonViewModel viewModel;
+    private ProgressBar pb_popular;
 
     int pastVisiblesItems, visibleItemCount, totalItemCount;
     boolean isLoading = false;
@@ -45,9 +42,8 @@ public class NowPlayingFragment extends Fragment {
     int posisi = 0; //Untuk IF apakah Item Sudah di tekan atau belum
     int halamannow = 0; //Untuk mengetahui letak halaman Item yang ditekan
 
-    NowPlayingAdapter adapter;
+    PopularPersonAdapter adapter;
     View view;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +54,7 @@ public class NowPlayingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NowPlayingFragment() {
+    public PopularPersonFragment() {
         // Required empty public constructor
     }
 
@@ -68,11 +64,11 @@ public class NowPlayingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NowPlayingFragment.
+     * @return A new instance of fragment PopularPersonFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NowPlayingFragment newInstance(String param1, String param2) {
-        NowPlayingFragment fragment = new NowPlayingFragment();
+    public static PopularPersonFragment newInstance(String param1, String param2) {
+        PopularPersonFragment fragment = new PopularPersonFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -93,16 +89,16 @@ public class NowPlayingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_now_playing, container, false);
+        view = inflater.inflate(R.layout.fragment_popular_person, container, false);
 
         //Deklarasi
-        rv_now_playing = view.findViewById(R.id.rv_now_playing_fragment);
-        pb_nowplaying = view.findViewById(R.id.pb_nowplaying);
+        rv_popular = view.findViewById(R.id.rv_popularperson);
+        pb_popular = view.findViewById(R.id.pb_popular);
 
         //Munculin Data Halaman Pertama
-        view_model = new ViewModelProvider(getActivity()).get(MovieViewModel.class);
-        view_model.getNowPlaying("1");
-        view_model.getResultNowPlaying().observe(getActivity(), showNowPlaying);
+        viewModel = new ViewModelProvider(getActivity()).get(PersonViewModel.class);
+        viewModel.getPopularPerson("1");
+        viewModel.getResultPopularPerson().observe(getActivity(), showPopularPerson);
 
         //Mereset Variable
         ispressed = false;
@@ -117,28 +113,27 @@ public class NowPlayingFragment extends Fragment {
     }
 
     //Observer buat halaman pertama
-    private Observer<NowPlaying> showNowPlaying = new Observer<NowPlaying>() {
+    private Observer<PopularPerson> showPopularPerson = new Observer<PopularPerson>() {
         @Override
-        public void onChanged(NowPlaying nowPlaying) {
-            rv_now_playing.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter = new NowPlayingAdapter(getActivity());
-            adapter.setListNowPlaying(nowPlaying.getResults());
-            rv_now_playing.setAdapter(adapter);
+        public void onChanged(PopularPerson popularPerson) {
+            rv_popular.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter = new PopularPersonAdapter(getActivity());
+            adapter.setListpopular(popularPerson.getResults());
+            rv_popular.setAdapter(adapter);
 
-            ItemClickSupport.addTo(rv_now_playing).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            ItemClickSupport.addTo(rv_popular).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                 @Override
                 public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("movieID", "" + nowPlaying.getResults().get(position).getId());
-                    Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_moviedetailsfragment, bundle);
+                    bundle.putString("personId", ""+popularPerson.getResults().get(position).getId());
+                    Navigation.findNavController(v).navigate(R.id.action_popularPersonFragment_to_fragment_person_details, bundle);
                 }
             });
         }
     };
 
-    //Function Setelah Scroll Sampai bawah
     private void onscrolllistener() {
-        rv_now_playing.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        rv_popular.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -148,13 +143,13 @@ public class NowPlayingFragment extends Fragment {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                if (dy > 0) {
-                    visibleItemCount = rv_now_playing.getLayoutManager().getChildCount();
-                    totalItemCount = rv_now_playing.getLayoutManager().getItemCount()-5;
-                    pastVisiblesItems = ((LinearLayoutManager) rv_now_playing.getLayoutManager()).findFirstVisibleItemPosition();
+                if (dy > 0){
+                    visibleItemCount = rv_popular.getLayoutManager().getChildCount();
+                    totalItemCount = rv_popular.getLayoutManager().getItemCount()-5;
+                    pastVisiblesItems = ((LinearLayoutManager) rv_popular.getLayoutManager()).findFirstVisibleItemPosition();
 
-                    if (!isLoading) {
-                        if ((visibleItemCount + pastVisiblesItems) == totalItemCount) {
+                    if (!isLoading){
+                        if ((visibleItemCount + pastVisiblesItems) == totalItemCount){
                             Handler handler = new Handler();
                             showProgressView();
                             isLoading = true;
@@ -165,9 +160,9 @@ public class NowPlayingFragment extends Fragment {
                                 public void run() {
                                     x++;
 
-                                    //View Model halaman setelah pertama
-                                    view_model.getNowPlaying(String.valueOf(x));
-                                    view_model.getResultNowPlaying().observe(getActivity(), loadmore);
+                                    //View Model setelah halaman pertama
+                                    viewModel.getPopularPerson(String.valueOf(x));
+                                    viewModel.getResultPopularPerson().observe(getActivity(), loadmore);
                                     isLoading = false;
                                     hideProgressView();
                                 }
@@ -178,23 +173,21 @@ public class NowPlayingFragment extends Fragment {
             }
         });
     }
-
     //Function Buat Loading Data setelah Halaman 1
-    private Observer<NowPlaying> loadmore = new Observer<NowPlaying>() {
+    private Observer<PopularPerson> loadmore = new Observer<PopularPerson>() {
         @Override
-        public void onChanged(NowPlaying nowPlaying) {
-
-            if (ispressed) {
+        public void onChanged(PopularPerson popularPerson) {
+            if (ispressed){
                 Bundle bundle = new Bundle();
-                bundle.putString("movieID", "" + nowPlaying.getResults().get(posisi - (20 * (halamannow - 1))).getId());
-                Navigation.findNavController(view).navigate(R.id.action_nowPlayingFragment_to_moviedetailsfragment, bundle);
+                bundle.putString("personId", "" + popularPerson.getResults().get(posisi - (20 * (halamannow - 1))).getId());
+                Navigation.findNavController(view).navigate(R.id.action_popularPersonFragment_to_fragment_person_details, bundle);
                 ispressed = false;
-            } else {
-                adapter.TambahData(nowPlaying.getResults());
-                adapter.notifyItemRangeChanged(totalItemCount+5, nowPlaying.getResults().size());
+            }else{
+                adapter.UpdateData(popularPerson.getResults());
+                adapter.notifyItemRangeChanged(totalItemCount+5, popularPerson.getResults().size());
             }
 
-            ItemClickSupport.addTo(rv_now_playing).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            ItemClickSupport.addTo(rv_popular).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                 @Override
                 public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                     posisi = position;
@@ -207,18 +200,18 @@ public class NowPlayingFragment extends Fragment {
     };
 
     private void showProgressView() {
-        pb_nowplaying.setVisibility(View.VISIBLE);
+        pb_popular.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressView() {
-        pb_nowplaying.setVisibility(View.INVISIBLE);
+        pb_popular.setVisibility(View.INVISIBLE);
     }
 
     //Function Untuk Mengambil Upcoming.Result dari Item Halaman yang ditekan
     public void kirimbundle() {
         if (ispressed) {
-            view_model.getNowPlaying(String.valueOf(halamannow));
-            view_model.getResultNowPlaying().observe(getActivity(), loadmore);
+            viewModel.getPopularPerson(String.valueOf(halamannow));
+            viewModel.getResultPopularPerson().observe(getActivity(), loadmore);
             isLoading = false;
         }
     }

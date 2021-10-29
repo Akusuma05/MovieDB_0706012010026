@@ -113,19 +113,19 @@ public class MovieDetailsActivity extends AppCompatActivity {
     };
 
     private void initview (){
-        lbl_judul = findViewById(R.id.lbl_judul_movie_details);
+        lbl_judul = findViewById(R.id.lbl_nama_person);
 
-        lbl_genre = findViewById(R.id.lbl_genre_movie_detail);
+        lbl_genre = findViewById(R.id.lbl_birthday_person);
         lbl_durasi = findViewById(R.id.lbl_duration_movie_details);
-        lbl_tagline = findViewById(R.id.lbl_tagline_movie_details);
-        lbl_synopsis = findViewById(R.id.lbl_synopsis_movie_details);
-        lbl_producer = findViewById(R.id.lbl_producer_movie_details);
+        lbl_tagline = findViewById(R.id.lbl_knownfor_person);
+        lbl_synopsis = findViewById(R.id.lbl_biography_person);
+        lbl_producer = findViewById(R.id.lbl_placeofbirth_person);
         lbl_rating = findViewById(R.id.lbl_rating_movie_details);
-        lbl_popularity = findViewById(R.id.lbl_popularity_movie_details);
+        lbl_popularity = findViewById(R.id.lbl_popularity_person);
         lbl_date = findViewById(R.id.lbl_date_movie_details);
         lbl_budget = findViewById(R.id.lbl_budget_movie_details);
         lbl_country = findViewById(R.id.lbl_country_movie_details);
-        poster = findViewById(R.id.iv_movie_details);
+        poster = findViewById(R.id.iv_person);
         backdrop = findViewById(R.id.iv_backdrop_movie_details);
         rb_film = findViewById(R.id.rb_movie_details);
         lbl_votecount = findViewById(R.id.lbl_votecount_movie_details);

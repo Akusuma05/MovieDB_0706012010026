@@ -87,18 +87,18 @@ public class MovieDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
 
         //Deklarasi
-        lbl_judul = view.findViewById(R.id.lbl_judul_movie_details);
+        lbl_judul = view.findViewById(R.id.lbl_nama_person);
 
-        lbl_genre = view.findViewById(R.id.lbl_genre_movie_detail);
+        lbl_genre = view.findViewById(R.id.lbl_birthday_person);
         lbl_durasi = view.findViewById(R.id.lbl_duration_movie_details);
-        lbl_tagline = view.findViewById(R.id.lbl_tagline_movie_details);
-        lbl_synopsis = view.findViewById(R.id.lbl_synopsis_movie_details);
+        lbl_tagline = view.findViewById(R.id.lbl_knownfor_person);
+        lbl_synopsis = view.findViewById(R.id.lbl_biography_person);
         lbl_rating = view.findViewById(R.id.lbl_rating_movie_details);
-        lbl_popularity = view.findViewById(R.id.lbl_popularity_movie_details);
+        lbl_popularity = view.findViewById(R.id.lbl_popularity_person);
         lbl_date = view.findViewById(R.id.lbl_date_movie_details);
         lbl_budget = view.findViewById(R.id.lbl_budget_movie_details);
-        lbl_country = view.findViewById(R.id.lbl_producer_movie_details);
-        poster = view.findViewById(R.id.iv_movie_details);
+        lbl_country = view.findViewById(R.id.lbl_placeofbirth_person);
+        poster = view.findViewById(R.id.iv_person);
         backdrop = view.findViewById(R.id.iv_backdrop_movie_details6);
         rb_film = view.findViewById(R.id.rb_movie_details);
         lbl_votecount = view.findViewById(R.id.lbl_votecount_movie_details);

@@ -34,4 +34,23 @@
             android:id="@+id/action_upComingFragment_to_moviedetailsfragment"
             app:destination="@id/moviedetailsfragment" />
     </fragment>
+    <fragment
+        android:id="@+id/popularPersonFragment"
+        android:name="com.example.moviedb.view.fragments.PopularPersonFragment"
+        android:label="Popular Actor"
+        tools:layout="@layout/fragment_popular_person">
+        <action
+            android:id="@+id/action_popularPersonFragment_to_fragment_person_details"
+            app:destination="@id/fragment_person_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_person_details"
+        android:name="com.example.moviedb.view.fragments.PersonDetailsFragment"
+        android:label="Person Details"
+        tools:layout="@layout/fragment_person_details">
+        <argument
+            android:name="personId"
+            android:defaultValue="null"
+            app:argType="string" />
+    </fragment>
 </navigation>

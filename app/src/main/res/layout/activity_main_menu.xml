@@ -32,13 +32,13 @@
         android:id="@+id/toolbar_main_menu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:subtitleTextColor="#FFFFFF"
+        app:subtitleTextColor="@color/black"
         app:title="Test"
-        app:titleTextColor="#FFFFFF" />
+        app:titleTextColor="@color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>
